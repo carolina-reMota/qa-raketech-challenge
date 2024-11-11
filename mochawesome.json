@@ -1,0 +1,245 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 6,
+    "passes": 5,
+    "pending": 0,
+    "failures": 1,
+    "testsRegistered": 6,
+    "passPercent": 83.33333333333333,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2024-11-11T22:47:50.353Z",
+    "end": "2024-11-11T22:48:08.378Z",
+    "duration": 18025
+  },
+  "results": [
+    {
+      "uuid": "54452c79-78d4-425f-8792-828cd5027f72",
+      "title": "",
+      "fullFile": "cypress/e2e/fe/uiTest.spec.js",
+      "file": "cypress/e2e/fe/uiTest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "08f43744-81fb-44a4-b00b-7fd0fbac7999",
+          "title": "UI Test for Raketech Website",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Navigation bar element validations",
+              "fullTitle": "UI Test for Raketech Website Navigation bar element validations",
+              "timedOut": null,
+              "duration": 2041,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#logo').should('be.visible');\ncy.get('#top').should('exist').within(() => {\n  cy.contains('Investor Relations');\n  cy.contains('About');\n  cy.contains('Playbook');\n  cy.contains('Contact');\n});",
+              "err": {},
+              "uuid": "70c3ab93-a65f-4747-be47-cba0b14f2dff",
+              "parentUUID": "08f43744-81fb-44a4-b00b-7fd0fbac7999",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Headline validations",
+              "fullTitle": "UI Test for Raketech Website Headline validations",
+              "timedOut": null,
+              "duration": 1426,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('h3').first().contains('iGaming marketing isn’t easy. It’s fast, very fast.');\ncy.scrollTo('0%', '90%');\ncy.get('h3').eq(2).contains('Recommended Reads');",
+              "err": {},
+              "uuid": "62728a0a-f19b-47e2-ad79-9b180d9dd5b1",
+              "parentUUID": "08f43744-81fb-44a4-b00b-7fd0fbac7999",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Footer validations",
+              "fullTitle": "UI Test for Raketech Website Footer validations",
+              "timedOut": null,
+              "duration": 1188,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#footer-widgets').scrollIntoView();\ncy.get('#nav_menu-2').contains('Company');\ncy.get('#nav_menu-3').contains('Investors');\ncy.get('#text-2').contains('Get in Touch');",
+              "err": {},
+              "uuid": "7b7221cd-6a42-42da-90b4-1c452537ffb4",
+              "parentUUID": "08f43744-81fb-44a4-b00b-7fd0fbac7999",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Search for \"Products\" and navigate to the Products page",
+              "fullTitle": "UI Test for Raketech Website Search for \"Products\" and navigate to the Products page",
+              "timedOut": null,
+              "duration": 4315,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#search-btn').click();\ncy.get('#search-box').get('input').should('be.visible');\ncy.wait(200);\ncy.get('#search-box').get('input').type('Products{enter}');\ncy.wait(100);\ncy.contains('a', 'Products').click({\n  force: true\n});\ncy.url().should('include', '/products');",
+              "err": {},
+              "uuid": "428ada47-0568-472c-a586-0fec2ecc861f",
+              "parentUUID": "08f43744-81fb-44a4-b00b-7fd0fbac7999",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Click Casinoguide product and Click with target icon and validate external URL",
+              "fullTitle": "UI Test for Raketech Website Click Casinoguide product and Click with target icon and validate external URL",
+              "timedOut": null,
+              "duration": 5681,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/products');\ncy.scrollTo(0, 500);\ncy.contains('Casino Products');\ncy.contains('h3', 'Casinoguide').click();\ncy.get('[class=\"nectar-close-indicator visible\"]');\ncy.get('i.icon-default-style').should('be.visible').and('have.class', 'fa-globe');\ncy.get('.team-desc i.icon-default-style').eq(0).closest('a').invoke('removeAttr', 'target').click();\ncy.url().should('include', 'https://www.casinoguide.se/');",
+              "err": {
+                "message": "Error: The following error originated from your application code, not from Cypress.\n\n  > Minified React error #418; visit https://react.dev/errors/418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n\nThis error was thrown by a cross origin page. If you wish to suppress this error you will have to use the cy.origin command to handle the error prior to visiting the page.\n\n`cy.origin('https://www.casinoguide.se', () => {`\n`  cy.on('uncaught:exception', (e) => {`\n`    if (e.message.includes('Things went bad')) {`\n`      // we expected this error, so let's ignore it`\n`      // and let the test continue`\n`      return false`\n`    }`\n`  })`\n`})`\n`cy.visit('https://www.casinoguide.se/')`\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n\nhttps://on.cypress.io/uncaught-exception-from-application\n\nhttps://on.cypress.io/origin",
+                "estack": "Error: The following error originated from your application code, not from Cypress.\n\n  > Minified React error #418; visit https://react.dev/errors/418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n\nThis error was thrown by a cross origin page. If you wish to suppress this error you will have to use the cy.origin command to handle the error prior to visiting the page.\n\n`cy.origin('https://www.casinoguide.se', () => {`\n`  cy.on('uncaught:exception', (e) => {`\n`    if (e.message.includes('Things went bad')) {`\n`      // we expected this error, so let's ignore it`\n`      // and let the test continue`\n`      return false`\n`    }`\n`  })`\n`})`\n`cy.visit('https://www.casinoguide.se/')`\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n\nhttps://on.cypress.io/uncaught-exception-from-application\n\nhttps://on.cypress.io/origin\nat CypressError (https://raketech.com/__cypress/runner/cypress_runner.js:75874:10)\nat cypressErr (https://raketech.com/__cypress/runner/cypress_runner.js:75898:34)\nat <unknown> (https://raketech.com/__cypress/runner/cypress_runner.js:169255:81)\nat emit (https://raketech.com/__cypress/runner/cypress_runner.js:146081:17)\nat onMessage (https://raketech.com/__cypress/runner/cypress_runner.js:168571:16)\nat crossOriginOnMessageRef (https://raketech.com/__/assets/index-DzmIZ6wu.js:109382:81)",
+                "diff": null
+              },
+              "uuid": "45b86025-0992-47be-b122-351b5dbc9cbd",
+              "parentUUID": "08f43744-81fb-44a4-b00b-7fd0fbac7999",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "70c3ab93-a65f-4747-be47-cba0b14f2dff",
+            "62728a0a-f19b-47e2-ad79-9b180d9dd5b1",
+            "7b7221cd-6a42-42da-90b4-1c452537ffb4",
+            "428ada47-0568-472c-a586-0fec2ecc861f"
+          ],
+          "failures": [
+            "45b86025-0992-47be-b122-351b5dbc9cbd"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 14651,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "80c236a2-0c72-4ed4-a164-dc499b3e5c63",
+      "title": "",
+      "fullFile": "cypress/e2e/be/apiTeest.spec.js",
+      "file": "cypress/e2e/be/apiTeest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "db7d4893-ce2a-4392-8724-04a99692f99a",
+          "title": "SWAPI People API Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validate that R2-D2’s skin color is white and blue",
+              "fullTitle": "SWAPI People API Tests Validate that R2-D2’s skin color is white and blue",
+              "timedOut": null,
+              "duration": 948,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('GET', 'https://swapi.dev/api/people/').then(response => {\n  expect(response.status).to.eq(200);\n  const r2d2 = response.body.results.find(character => character.name === 'R2-D2');\n  expect(r2d2).to.not.be.undefined;\n  expect(r2d2.skin_color).to.eq('white, blue');\n});",
+              "err": {},
+              "uuid": "92340973-9e35-4910-8608-327b0bdd85cc",
+              "parentUUID": "db7d4893-ce2a-4392-8724-04a99692f99a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "92340973-9e35-4910-8608-327b0bdd85cc"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 948,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

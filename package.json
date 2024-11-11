@@ -1,0 +1,33 @@
+{
+  "name": "qa-raketech-challenge-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:fe": "cypress run --spec 'cypress/e2e/fe/*.spec.js' --browser ${BROWSER:-electron} ${HEADED:-}",
+    "test:be": "cypress run --spec 'cypress/e2e/be/*.spec.js'",
+    "delete:reports": "rm -r cypress/results/* || true",
+    "prereport": "npm run delete:reports",
+    "mochawesome:merge": "npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > mochawesome.json && npx marge mochawesome.json",
+    "junit:merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/result.xml",
+    "cypress:run:safari": "npm run prereport && BROWSER=webkit HEADED=--headed npm run test:fe && npm run junit:merge && npm run mochawesome:merge",
+    "cypress:run:chrome": "npm run prereport && BROWSER=chrome HEADED=--headed npm run test:fe && npm run junit:merge && npm run mochawesome:merge",
+    "cypress:run:crossbrowser": "cypress:run:safari && cypress:run:chrome"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.15.2",
+    "cypress-iframe": "^1.0.1",
+    "cypress-multi-reporters": "^2.0.4",
+    "mocha-junit-reporter": "^2.2.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0",
+    "playwright-webkit": "^1.48.2"
+  },
+  "dependencies": {
+    "junit-merge": "^2.0.0"
+  }
+}
