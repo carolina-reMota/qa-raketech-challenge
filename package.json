@@ -11,8 +11,9 @@
     "mochawesome:merge": "npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > mochawesome.json && npx marge mochawesome.json",
     "junit:merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/result.xml",
     "cypress:run:safari": "npm run prereport && BROWSER=webkit HEADED=--headed npm run test:fe && npm run junit:merge && npm run mochawesome:merge",
-    "cypress:run:chrome": "npm run prereport && BROWSER=chrome HEADED=--headed npm run test:fe && npm run junit:merge && npm run mochawesome:merge",
-    "cypress:run:crossbrowser": "cypress:run:safari && cypress:run:chrome"
+    "cypress:run:chrome": "npm run prereport && BROWSER=chrome npm run test:fe && npm run junit:merge && npm run mochawesome:merge",
+    "cypress:run:electron": "npm run prereport && BROWSER=electron npm run test:fe && npm run junit:merge && npm run mochawesome:merge",
+    "cypress:run:crossbrowser": "npm run cypress:run:electron && npm run cypress:run:safari && npm run cypress:run:chrome"
   },
   "keywords": [],
   "author": "",

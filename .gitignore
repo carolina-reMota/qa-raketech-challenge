@@ -1,3 +1,10 @@
 node_modules
 cypress/results
+cypress/screenshots
 cypress/videos
+
+mochawesome-report/
+merged-test-results.xml
+mochawesome.json
+
+.DS_Store

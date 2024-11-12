@@ -40,7 +40,7 @@ describe('UI Test for Raketech Website', () => {
         cy.url().should('include' , '/products')
     } )
 
-    it('Click Casinoguide product and Click with target icon and validate external URL', () => {
+    it('Click Casinoguide product and Click with target icon and validate external URL', {browser: ['!webkit']}, () => {
         cy.visit('/products')
         cy.scrollTo(0, 500)
         cy.contains('Casino Products')

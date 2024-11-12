@@ -14,7 +14,7 @@ npm install
 - Run the tests
 ```ssh
 UI testing:
-Electron - npm run test:fe
+Electron - npm run cypress:run:electron
 Chrome - npm run cypress:run:chrome
 Safari - npm run cypress:run:safari
 Crossbrowsers - npm run cypress:run:crossbrowser
